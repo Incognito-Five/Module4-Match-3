@@ -36,7 +36,7 @@ function PlayState:init()
     -- tile we're currently highlighting (preparing to swap)
     self.highlightedTile = nil
     
-    self.timer = 10
+    self.timer = 60
     self.totalScore = 0
 
     -- set our Timer class to turn cursor highlight on and off
@@ -87,7 +87,7 @@ function PlayState:update(dt)
         Timer.clear()
 
         gSounds["game-over"]:play()
-
+        self.totalScore = self.totalScore + self.score
         gStateMachine:change(
             "game-over",
             {
